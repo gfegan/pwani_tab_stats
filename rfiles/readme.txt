@@ -1,1 +1,1 @@
-This is the folder where we will stor eare R translations of the stata do files
+This is the folder where we will store our R translations of the Stata do files
