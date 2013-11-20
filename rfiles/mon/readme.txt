@@ -1,1 +1,1 @@
-We'll piut R scriptys in this folder
+We'll put R scripts in this folder
