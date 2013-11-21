@@ -1,1 +1,1 @@
-here we will store usefula documentation to help us
+here we will store useful documentation to help either the course organisers or particiipants
