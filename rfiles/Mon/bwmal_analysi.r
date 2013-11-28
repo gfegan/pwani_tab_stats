@@ -3,10 +3,11 @@
 ## Date 8th Feb 2011
 ## Original Stat .do file By Jim Todd
 ## First Modified by Greg Fegan and Ritah Meka November 28th 2013
-## Last modified by RITA on 28/11/13
+## Last modified by RITA on 28/11/13 then commeneted later by GF
 ##
 ## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
 ##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 Ive set it to my setup 4 now
+##        iii) Specifically Rita consult line 88 
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
@@ -84,7 +85,7 @@ gen gestgrp=gestwks
 recode gestgrp min/36=1 37/max=2
 ##in r
 gestgrp<-bwmal$gestwks
-bwmal$gestgrp[gestwks<=36]<-1
+bwmal$gestgrp[gestwks<=36]<-1 # This doesnt seem to work  is it an issue of which packahes you've used Rita?
 bwmal$gestgrp[gestwks>=37]<-2
 
 ## We can generate labels for the values in each variable
