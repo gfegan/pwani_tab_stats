@@ -6,7 +6,7 @@
 ## Last modified by RITA on 28/11/13
 ##
 ## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
-##        ii) NED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE
+##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
