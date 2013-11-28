@@ -3,9 +3,10 @@
 ## Date 8th Feb 2011
 ## Original Stat .do file By Jim Todd
 ## First Modified by Greg Fegan and Ritah Meka November 28th 2013
-## Last modified by XXXXX on XX/XX/XX
+## Last modified by RITA on 28/11/13
 ##
-## TODO:  Have someone finish cahnging the code over into R
+## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
+##        ii) NED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
