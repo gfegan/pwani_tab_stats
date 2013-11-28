@@ -9,7 +9,7 @@
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
-#####################################
+###################################################3
                     # You can also put comments between these markers 
 # clear # The command clear in stata removes the data from memory in R we can use something like
 rm(list = ls())
@@ -80,6 +80,10 @@ hist(bwmal$sex) # Rita et al find me a better command than this please
 ## Generate a new variable, and recode it to show two categories
 gen gestgrp=gestwks
 recode gestgrp min/36=1 37/max=2
+##in r
+gestgrp<-bwmal$gestwks
+bwmal$gestgrp[gestwks<=36]<-1
+bwmal$gestgrp[gestwks>=37]<-2
 
 ## We can generate labels for the values in each variable
 ## Two steps. First define the label - smokelbl
@@ -87,20 +91,37 @@ recode gestgrp min/36=1 37/max=2
 label define smokelbl 0 "Non-smoker" 1 "smoker"
 label values smoke smokelbl
 tab smoke
-## Notice the difference with the label applied to the values
+##in r
+bwmal$smoke<-factor(bwmal$smoke,levels=c(0,1),labels=c("Non-smoker","Smoker"))
+table(bwmal$smoke)
 
+## Notice the difference with the label applied to the values
 # Define labels for sex
 label define gender 0 "Female" 1 "Male"
 label value sex gender
 tab sex
+##in r
+bwmal$sex<-factor(bwmal$sex,levels=c(0,1),labels=c("Female","Male"))
+table(bwmal$sex)
+
+
 # We can also label the variable itself to make it clear what it means
 label variable sex "The sex of the Baby"
 tab sex
+##in r
+##changes the name
+names(bwmal)[4]<-"The sex of the Baby"
+##gives a label
+
+
+table(bwmal[4])
 
 # Create a special group for analysis
 generate specialgrp=0
 replace specialgrp=1 if sex==1 & bweight>4.0 & gestwks>40
-
+##in r
+specialgrp<-subset(bwmal,sex==1 & bweight>4.0 & gestwks>40)
+bwmal$specialgrp<-as.numeric(sex==1 & bweight>4.0 & gestwks>40)
 
 ## Then we can save the data in a new data file
 ## The replace option overwrites any file of the same name - BEWARE do not over write your original data
@@ -114,3 +135,4 @@ help generate
 log close
 
  
+
