@@ -9,3 +9,4 @@ Amongst other things the project will take the original Stata(tm) **command  ie 
 
 The project will utilise an [R-Studio](http:/www.rstudio.com) Server [installation](http://www.rstudio.com/ide/download/server) running on the [Pwani University](http://www.pu.ac.ke) ICT infrastructure
 
+[Ken Mwai](http://www.linkedin.com/in/kennmwai) will be helping out on some of the IT setup for the project as well as maybe some stats teaching in addition
