@@ -6,7 +6,7 @@
 ## Last modified by RITA on 28/11/13
 ##
 ## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
-##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 
+##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 Ive set it to my setup 4 now
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
@@ -23,13 +23,14 @@ rm(list = ls())
 # Best to ensure that you change directory, to the folder for this analysis
 # Do this first, and then the log file can be saved in the same directory
 ################################################################
-setwd("C:\\JimT\\Mwanza\\NIMR\\Training\\Training_committee\\Research methods course\\Course materials\\Stats\\Data")
+#setwd("C:\\JimT\\Mwanza\\NIMR\\Training\\Training_committee\\Research methods course\\Course materials\\Stats\\Data")
+setwd("H:/Pwani_Collabo/tab_stats")
 
 #####################################################
 ## You must close the previous log files first
 ## Then open the log file to record your results
 ##########################################
-log using bwmal.log , replace
+#log using bwmal.log , replace
 
 
 # Before starting any analysis you must get the data
@@ -40,7 +41,7 @@ log using bwmal.log , replace
 library(foreign)
 
 # lets create a dataframe object called bwmal which will read in all the dat from the stat file bwaml.dta
-bwmal <- read.dta("bwmal.dta")
+bwmal <- read.dta("data/bwmal.dta")
 
 
 
