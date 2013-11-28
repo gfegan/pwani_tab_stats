@@ -78,7 +78,8 @@ table(bwmal$smoke)
 # To obtain a histogram
 #histogram matage
 hist(bwmal$matage)
-hist(bwmal$sex) # Rita et al find me a better command than this please 
+hist(bwmal$sex) # Rita et al find me a better command than this please checkout what ive dne below and prettify this please
+arm::discrete.histogram (bwmal$sex) 
 
 ## Generate a new variable, and recode it to show two categories
 gen gestgrp=gestwks
