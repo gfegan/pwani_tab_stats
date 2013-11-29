@@ -86,8 +86,8 @@ gen gestgrp=gestwks
 recode gestgrp min/36=1 37/max=2
 ##in r
 gestgrp<-bwmal$gestwks
-bwmal$gestgrp[gestwks<=36]<-1 # This doesnt seem to work  is it an issue of which packahes you've used Rita?
-bwmal$gestgrp[gestwks>=37]<-2
+bwmal$gestgrp[bwmal$gestwks<=36]<-1 # This doesnt seem to work  is it an issue of which packahes you've used Rita?
+bwmal$gestgrp[bwmal$gestwks>=37]<-2# i think it worked on my side because i had attached the dataset... i've put the dollar sign now you can try it
 
 ## We can generate labels for the values in each variable
 ## Two steps. First define the label - smokelbl
@@ -124,9 +124,11 @@ table(bwmal[4])
 generate specialgrp=0
 replace specialgrp=1 if sex==1 & bweight>4.0 & gestwks>40
 ##in r
-specialgrp<-subset(bwmal,sex==1 & bweight>4.0 & gestwks>40)
-bwmal$specialgrp<-as.numeric(sex==1 & bweight>4.0 & gestwks>40)
+specialgrp<-subset(bwmal,bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
+bwmal$specialgrp<-as.numeric(bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
 
+##view the dataset for the changes made
+View(bwmal)
 ## Then we can save the data in a new data file
 ## The replace option overwrites any file of the same name - BEWARE do not over write your original data
 save bwmal_new , replace
