@@ -1,5 +1,12 @@
 #  Need to change this to R format and get comments around the original stata parts
-use G:\Continuous\maltreat.dta
+# also need to decide upon the location where we are puting things
+
+setwd("H:/Pwani_Collabo/tab_stats")
+library(foreign)
+
+# use G:\Continuous\maltreat.dta
+
+maltreat <- read.dta("data/maltreat.dta") 
 *dscribe the maltreat dataset
 describe
 *inspect the pvc variable for missing, maximum, minmum etc
