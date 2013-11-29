@@ -1,3 +1,4 @@
+#  Need to change this to R format and get comments around the original stata parts
 use G:\Continuous\maltreat.dta
 *dscribe the maltreat dataset
 describe
