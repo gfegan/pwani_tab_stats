@@ -3,10 +3,11 @@
 ## Date 8th Feb 2011
 ## Original Stat .do file By Jim Todd
 ## First Modified by Greg Fegan and Ritah Meka November 28th 2013
-## Last modified by RITA on 28/11/13
+## Last modified by RITA on 28/11/13 then commeneted later by GF
 ##
 ## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
-##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 
+##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 Ive set it to my setup 4 now
+##        iii) Specifically Rita consult line 88 
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
@@ -23,13 +24,14 @@ rm(list = ls())
 # Best to ensure that you change directory, to the folder for this analysis
 # Do this first, and then the log file can be saved in the same directory
 ################################################################
-setwd("C:\\JimT\\Mwanza\\NIMR\\Training\\Training_committee\\Research methods course\\Course materials\\Stats\\Data")
+#setwd("C:\\JimT\\Mwanza\\NIMR\\Training\\Training_committee\\Research methods course\\Course materials\\Stats\\Data")
+setwd("H:/Pwani_Collabo/tab_stats")
 
 #####################################################
 ## You must close the previous log files first
 ## Then open the log file to record your results
 ##########################################
-log using bwmal.log , replace
+#log using bwmal.log , replace
 
 
 # Before starting any analysis you must get the data
@@ -40,7 +42,7 @@ log using bwmal.log , replace
 library(foreign)
 
 # lets create a dataframe object called bwmal which will read in all the dat from the stat file bwaml.dta
-bwmal <- read.dta("bwmal.dta")
+bwmal <- read.dta("data/bwmal.dta")
 
 
 
@@ -76,15 +78,16 @@ table(bwmal$smoke)
 # To obtain a histogram
 #histogram matage
 hist(bwmal$matage)
-hist(bwmal$sex) # Rita et al find me a better command than this please 
+hist(bwmal$sex) # Rita et al find me a better command than this please checkout what ive dne below and prettify this please
+arm::discrete.histogram (bwmal$sex) 
 
 ## Generate a new variable, and recode it to show two categories
 gen gestgrp=gestwks
 recode gestgrp min/36=1 37/max=2
 ##in r
 gestgrp<-bwmal$gestwks
-bwmal$gestgrp[gestwks<=36]<-1
-bwmal$gestgrp[gestwks>=37]<-2
+bwmal$gestgrp[bwmal$gestwks<=36]<-1 # This doesnt seem to work  is it an issue of which packahes you've used Rita?
+bwmal$gestgrp[bwmal$gestwks>=37]<-2# i think it worked on my side because i had attached the dataset... i've put the dollar sign now you can try it
 
 ## We can generate labels for the values in each variable
 ## Two steps. First define the label - smokelbl
@@ -121,9 +124,11 @@ table(bwmal[4])
 generate specialgrp=0
 replace specialgrp=1 if sex==1 & bweight>4.0 & gestwks>40
 ##in r
-specialgrp<-subset(bwmal,sex==1 & bweight>4.0 & gestwks>40)
-bwmal$specialgrp<-as.numeric(sex==1 & bweight>4.0 & gestwks>40)
+specialgrp<-subset(bwmal,bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
+bwmal$specialgrp<-as.numeric(bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
 
+##view the dataset for the changes made
+View(bwmal)
 ## Then we can save the data in a new data file
 ## The replace option overwrites any file of the same name - BEWARE do not over write your original data
 save bwmal_new , replace
