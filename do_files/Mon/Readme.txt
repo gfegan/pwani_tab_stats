@@ -1,1 +1,1 @@
-Files for the Monday seession go here
+Files for the Monday session go here
