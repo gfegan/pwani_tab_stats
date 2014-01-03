@@ -3,11 +3,12 @@
 ## Date 8th Feb 2011
 ## Original Stat .do file By Jim Todd
 ## First Modified by Greg Fegan and Ritah Meka November 28th 2013
-## Last modified by RITA on 28/11/13 then commeneted later by GF
+## Last modified by RITA on 28/11/13 then commented later by GF
 ##
 ## TODO:  i)  WE NEED TO COMMENT OUT ALL THE STATA CODE SO THIS RUNS
 ##        ii) NEED TO DECIDE ON THE FOLDER STRUCTURE FOR THE COURSE effects line 26 Ive set it to my setup 4 now
-##        iii) Specifically Rita consult line 88 
+##        iii) Specifically Rita consult line 88
+##        iV) There are still some instances of stata code here that need resolving eg line 51 & 44 ... 
 ##      
 ## As a practical for new Stata users
 ## This section at the beginning enables you to put comments about the do-file
