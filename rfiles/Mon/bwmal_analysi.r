@@ -1,7 +1,6 @@
 ## Analysis of the bwmal data
 ## Data found in C:\jimt\mwanza\nimr
-## Date 8th Feb 2011
-## Original Stat .do file By Jim Todd
+## Original Stata .do file By Jim Todd
 ## First Modified by Greg Fegan and Ritah Meka November 28th 2013
 ## Last modified by RITA on 28/11/13 then commented later by GF
 ##
@@ -28,12 +27,6 @@ rm(list = ls())
 #setwd("C:\\JimT\\Mwanza\\NIMR\\Training\\Training_committee\\Research methods course\\Course materials\\Stats\\Data")
 setwd("H:/Pwani_Collabo/tab_stats")
 
-#####################################################
-## You must close the previous log files first
-## Then open the log file to record your results
-##########################################
-#log using bwmal.log , replace
-
 
 # Before starting any analysis you must get the data
 # Open the data with the command 'use'
@@ -41,36 +34,36 @@ setwd("H:/Pwani_Collabo/tab_stats")
 # use bwmal, replace
 #  there are a number of  packages within R that can read in Stata .dta binary data files we prefer "foreign"
 library(foreign)
+library(psych)
+library(arm)
 
 # lets create a dataframe object called bwmal which will read in all the dat from the stat file bwaml.dta
 bwmal <- read.dta("data/bwmal.dta")
 
-
-
 # Start by describing the variables, 11 variables, and 791 observations
-describe
+str(bwmal)
 
-# Browse enables you to look at the data
-edit
+# View enables you to look at the data and also edit() allows you to make changes to the data
+View(bwmal)
+edit(bwmal)
 
 ## The command summarize to show means and std dev
 ## This can be for all variables or just for some variables
-
 summary(bwmal)
 summary(bwmal$matage) 
-
-str(bwmal)
 
 
 # Listing all the data would take a lot of space
 # Better to just list the first 10 observations in 1/10
-list matage mheight in 1/10
+head(bwmal$matage,n=10)
 head(cbind(bwmal$matage, bwmal$mheight),n=10)
+
 
 # Or listing a subset, such as those who smoke
 # Note when we use logical tests ie "if we test some variable equals some value" 
 #   we must use the == (double equals sign) 
 # Note that in the line below the R command print is assumed
+#listing data where smoke==1
 bwmal[bwmal$smoke=="1", ]
 
 # This command gives the frequency and percentage for different levels of a variable
@@ -79,67 +72,49 @@ table(bwmal$smoke)
 # To obtain a histogram
 #histogram matage
 hist(bwmal$matage)
-hist(bwmal$sex) # Rita et al find me a better command than this please checkout what ive dne below and prettify this please
-arm::discrete.histogram (bwmal$sex) 
+arm::discrete.histogram (bwmal$sex, xlab="Sex") 
 
 ## Generate a new variable, and recode it to show two categories
-gen gestgrp=gestwks
-recode gestgrp min/36=1 37/max=2
-##in r
 gestgrp<-bwmal$gestwks
-bwmal$gestgrp[bwmal$gestwks<=36]<-1 # This doesnt seem to work  is it an issue of which packahes you've used Rita?
-bwmal$gestgrp[bwmal$gestwks>=37]<-2# i think it worked on my side because i had attached the dataset... i've put the dollar sign now you can try it
+gestgrp[bwmal$gestwks<=36]<-1 
+gestgrp[bwmal$gestwks>=37]<-2
 
 ## We can generate labels for the values in each variable
 ## Two steps. First define the label - smokelbl
 ## And then apply that label to the values in one variable
-label define smokelbl 0 "Non-smoker" 1 "smoker"
-label values smoke smokelbl
-tab smoke
-##in r
 bwmal$smoke<-factor(bwmal$smoke,levels=c(0,1),labels=c("Non-smoker","Smoker"))
 table(bwmal$smoke)
 
 ## Notice the difference with the label applied to the values
 # Define labels for sex
-label define gender 0 "Female" 1 "Male"
-label value sex gender
-tab sex
-##in r
 bwmal$sex<-factor(bwmal$sex,levels=c(0,1),labels=c("Female","Male"))
 table(bwmal$sex)
 
 
 # We can also label the variable itself to make it clear what it means
-label variable sex "The sex of the Baby"
-tab sex
-##in r
-##changes the name
+##changes the label
 names(bwmal)[4]<-"The sex of the Baby"
 ##gives a label
-
-
 table(bwmal[4])
 
 # Create a special group for analysis
-generate specialgrp=0
-replace specialgrp=1 if sex==1 & bweight>4.0 & gestwks>40
-##in r
-specialgrp<-subset(bwmal,bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
-bwmal$specialgrp<-as.numeric(bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
+bwmal$specialgrp <- 0
+bwmal$specialgrp[bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40]<-1
+table(bwmal$specialgrp)
+#bwmal$specialgrpB<-as.numeric(bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
+#specialgrpB<-subset(bwmal,bwmal$sex=="Male" & bwmal$bweight>4.0 & bwmal$gestwks>40)
 
-##view the dataset for the changes made
-View(bwmal)
+
 ## Then we can save the data in a new data file
 ## The replace option overwrites any file of the same name - BEWARE do not over write your original data
 save bwmal_new , replace
 
-## Another useful command is help:
-help summarize
-help save
-help generate
+## Another useful command is ?
+? summarize
+? save
+? generate
 
-log close
+
 
  
 

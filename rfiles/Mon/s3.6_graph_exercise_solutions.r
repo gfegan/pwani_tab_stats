@@ -5,11 +5,11 @@ library(foreign) #allow reading of dta files
 #library(reshape2) 
 library(doBy) #provide summary of data
 
-#setting the working directory
-setwd("~/pwani_tab_stats")
+#setting the working directory (cannot change working directory if you are working on a project folder)
+#setwd("~/pwani_tab_stats")
 
 #load the data set
-zambia3 <- as.data.frame(read.dta("zambia3.dta", convert.dates=TRUE))
+zambia3 <- as.data.frame(read.dta("data/zambia3.dta", convert.dates=TRUE))
 
 #summarize the count of data by education and urban/rural
 total.id <- summaryBy(id~educ +urban, data=zambia3, FUN=function(x)  c(count=length(x)))
@@ -36,7 +36,7 @@ ggplot(total.id[!is.na(total.id$urban), ] , aes(as.factor(urban), fill=educ, wei
   
 #******** QUESTION 3 SOLUTION *******
 #load the data set
-bab9 <- as.data.frame(read.dta("bab9.dta", convert.dates=TRUE))
+bab9 <- as.data.frame(read.dta("data/bab9.dta", convert.dates=TRUE))
 as.data.frame(bab9)
 ggplot(bab9, aes(factor(gestcat), bweight)) + geom_boxplot()
 #*WITH A TITLE BELOW THE GRAPH
@@ -53,7 +53,7 @@ ggplot(bab9, aes(factor(gestcat), bweight)) + geom_boxplot() + ggtitle("Birth we
 
 #******** QUESTION 4 SOLUTION *******
 #load the data set
-zambia4 <- as.data.frame(read.dta("zambia4_isingo.dta", convert.dates=TRUE))
+zambia4 <- as.data.frame(read.dta("data/zambia4_isingo.dta", convert.dates=TRUE))
 as.data.frame(zambia4)
 #*PIE CHART FOR EDUCATIONAL LEVEL OF WOMEN WHO USED A CONDOM 
 #*AT LAST SEX AND THOSE WHO DID NOT
