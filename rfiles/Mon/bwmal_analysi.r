@@ -32,6 +32,10 @@ setwd("H:/Pwani_Collabo/tab_stats")
 # Open the data with the command 'use'
 #use "C:\JimT\Mwanza\NIMR\Training\Training_committee\Research methods course\Course materials\Stats\Data\bwmal.dta"
 # use bwmal, replace
+# If necessary, install packages
+# install.packages("packages/foreign", repos = NULL)
+# install.packages("packages/psych", repos = NULL)
+
 #  there are a number of  packages within R that can read in Stata .dta binary data files we prefer "foreign"
 library(foreign)
 library(psych)

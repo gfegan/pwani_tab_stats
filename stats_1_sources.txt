@@ -1,0 +1,3 @@
+ Statistics One, 2013, Lab 8 ttest
+ Statistics One, 2013, Lab 4 corelation
+ Statistics One, 2013, Lab 5 anova

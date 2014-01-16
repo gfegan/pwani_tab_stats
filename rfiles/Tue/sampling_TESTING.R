@@ -42,3 +42,27 @@ maltreat.60 <- maltreat[1:60,]
 ci(maltreat.60$pcv,ci=0.95)
 mean(maltreat.60$pcv)
 
+data2 <-as.data.frame(read.dta("data/maltreat.dta"))
+dd <- function(x,y,z) {
+  pars <- match.call()[-1]
+   data2 <- read.dta(x)
+  data3 <- subset(data2, y=="Madinka")
+  print(mean(...=data3 , z, na.rm=T))
+  za <-  pars$z
+  ya <- pars$y
+ attach(data2)
+ # ddply(data2,~ ya,summarise,mean=mean(za))
+ #print(pars$z)
+  #print(class(data))
+  #z2 <- aggregate( d, pars$data, mean)
+}
+dd("data/maltreat.dta", ethnicn , pcv)
+
+ddply(data2,~ethnicn,summarise,mean=mean(pcv))
+
+
+for (i in maltreat$ethnicn) {mm <- mean(maltreat$pcv)  return(mm)}
+getwd()
+data2 <- read.dta("data/maltreat.dta")
+class(data2$pcv)
+aggregate( pcv~ethnicn, data2, mean )
