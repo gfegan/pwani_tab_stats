@@ -17,7 +17,7 @@ rm(list = ls())
 # Best to ensure that you change directory, to the folder for this analysis
 # Do this first, and then the log file can be saved in the same directory
 ################################################################
-setwd("H:/Pwani_Collabo/tab_stats")
+#setwd("H:/Pwani_Collabo/tab_stats")
 
 
 

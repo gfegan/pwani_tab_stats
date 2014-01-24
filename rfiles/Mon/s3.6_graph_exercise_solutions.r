@@ -7,19 +7,32 @@ library(plyr) #provide summary of data
 #setting the working directory (cannot change working directory if you are working on a project folder)
 #setwd("~/pwani_tab_stats")
 
-#load the data set
+#load the data set of Zambia 3
 zambia3 <- read.dta("data/zambia3.dta", convert.dates=TRUE)
 
+#histogram of age
+hist(zambia3$age)
+#adding title to the  histogram , y label and x label
+hist(zambia3$age , main="The Age distribution" , ylab="Age count" ,  xlab="Age")
+#adding color to the bars
+hist(zambia3$age , main="The Age distribution" , ylab="Age count" ,  xlab="Age", col="Red")
+#color by a factor variable and ??add a legend
+hist(zambia3$age , main="The Age distribution" , ylab="Age count" ,  xlab="Age", col=zambia3$agegrp)
+
+#Do a graph to summarize by education in urban and rural areas
+#to see diff ploting symbols -- example(points)
 #summarize the count of data by education and urban/rural
 table <- table(zambia3$educ ,zambia3$urban )
+table
+
 #*DISTRIBUTION OF EDUCATION IN URBAN AND RURAL AREAS
-barplot (table  ) # stacked
+barplot (table) # stacked
 barplot (table,  beside=TRUE  )
 
 
 #adding title and y labels
 barplot (table, main="DISTRIBUTION OF EDUCATION IN URBAN AND RURAL AREAS",
-          beside=TRUE , ylab="Number of respodents" ,   legend = rownames(table))
+          beside=TRUE , ylab="Number of respodents" ,legend.text = row.names(table), args.legend = list(x = "topright"))
 
 #*YOU PROBABLY WANT TO ADD A TEXT LABEL TO THE CATEGORY AXIS.
 #*EITHER LABEL THE URBAN VARIABLE OR:
@@ -27,30 +40,61 @@ zambia3$urban <- factor(zambia3$urban,
                          levels = c(1,2),
                          labels = c("Urban", "Rural")) 
 table2 <- table( zambia3$educ ,zambia3$urban )
+table2
 barplot (table2, main="DISTRIBUTION OF EDUCATION IN URBAN AND RURAL AREAS",
           , beside=TRUE , ylab="Number of respodents" )
+
 #saving a plot
+#the plot will be saved in your working directory which is
+getwd()
 dev.copy(png,'myplot.png')
 dev.off()
 
+
 #*WITH MOST OF THE COLOURS CHANGED. Add color according to the number of grouping values available
 barplot (table2, main="DISTRIBUTION OF EDUCATION IN URBAN AND RURAL AREAS",
-         , beside=TRUE , ylab="Number of respodents" ,col=c("red","orange" ,"blue","green") , legend = rownames(table))
+         , beside=TRUE , ylab="Number of respodents" ,col=c("red","orange" ,"blue","green") ,
+         legend.text = row.names(table), args.legend = list(x = "topright") )
+
 
 #******** QUESTION 3 SOLUTION *******
 #load the data set
 bab9 <- read.dta("data/bab9.dta", convert.dates=TRUE)
-boxplot(data=bab9,   bweight ~ gestcat )
 
-#*WITH A TITLE BELOW THE GRAPH
+#scatter plot
+plot(bab9$gestwks)
+plot(bab9$matage)
+#scatter plot of maternal age vs gestational age
+plot(bab9$gestwks ,bab9$matage )
+#add yaxis label and xaxis label
+plot(bab9$gestwks ,bab9$matage, ylab="Maternal Age", xlab="Gestational age" )
+
+#color
+#scatter of gestational age and birthweight
+names(table(bab9$sex))
+plot(bab9$bweight, bab9$gestwks , ylab="Maternal Age", xlab="Gestational age" , col=bab9$sex)
+abline(lm(bab9$bweight ~ bab9$gestwks), col="blue") # regression line (y~x) 
+legend('bottomright',  legend=c("Male","female"),  lwd=1, col=c('red', 'black'), bty='n', cex=.75)
+
+#using ggplot makes it easier
+library(ggplot2)
+qplot(data=bab9 ,bweight, gestwks ,color=sex)
+#adding a regression line
+qplot(data=bab9 ,bweight, gestwks ,color=sex , geom=c("point","smooth"),method="lm")
+
+
+#boxplot
+boxplot(data=bab9,   bweight ~ gestcat )
+#*WITH A TITLE for GRAPH
 boxplot(data=bab9,   bweight ~ gestcat , main="Birth weight by gestational age")
 
 #*AGAIN YOU CAN LABEL THE gestcat VARIABLE OR WRITE YOUR 
 #*OWN LABELS ON THE X-AXIS
-bab9$gestcat <- factor(bab9$gestcat,
+bab9$gestcat2 <- factor(bab9$gestcat,
                          levels = c(1,2),
-                         labels = c("Premature", "Term"))
-boxplot(data=bab9,   bweight ~ gestcat , main="Birth weight by gestational age")
+                         labels = c("Premature", "Term"))#
+table(bab9$gestcat2)
+boxplot(data=bab9,   bweight ~ gestcat2 , main="Birth weight by gestational age")
 
 #******** QUESTION 4 SOLUTION *******
 #load the data set
