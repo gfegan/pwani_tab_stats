@@ -58,7 +58,7 @@ tail(bwmal$matage,n=10)
 
 # Or listing a subset, such as those who smoke
 # Note when we use logical tests ie "if we test some variable equals some value" 
-#   we must use the == (double equals sign) 
+# we must use the == (double equals sign) 
 # Note that in the line below the R command print is assumed
 #listing data where smoke==1
 bwmal[bwmal$smoke=="1", ]
