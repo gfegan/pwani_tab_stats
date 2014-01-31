@@ -1,0 +1,172 @@
+\documentclass[slidestop,compress,14pt,xcolor=dvipsnames]{beamer}
+\usepackage{lmodern}
+\usepackage{graphicx} %package for attaching images
+%\usetheme{Madrid}
+\usetheme{Ilmenau}
+ %verbatim
+\mode<presentation>
+\setbeamercolor{section in head}{parent=palette quaternary}
+
+\makeatletter
+\setbeamertemplate{}
+{%
+\vskip-9ex%
+\begin{beamercolorbox}{}
+\hfill\usebeamercolor[fg]{navigation symbols dimmed}%
+    \insertslidenavigationsymbol
+    \insertframenavigationsymbol
+    \insertsubsectionnavigationsymbol
+    \insertsectionnavigationsymbol
+    \insertdocnavigationsymbol
+    \insertbackfindforwardnavigationsymbol
+  \end{beamercolorbox}%    
+  \begin{beamercolorbox}[ht=2ex,dp=3ex]{section in head}%
+    \insertnavigation{\paperwidth}
+  \end{beamercolorbox}%
+}%
+\makeatother
+
+\author{Ken Mwai}
+\institute{KEMRI-Wellcome}
+
+\begin{document}
+\section{Correlation}
+\begin{frame}{Title}
+\vspace*{\fill}
+\begin{center}
+Correlation
+\end{center}
+\vspace*{\fill}
+\end{frame}
+
+\section{Overview}
+\subsection{Introduction}
+\begin{frame}{Overview}
+\begin{itemize}
+    \item  Correlation is made of {\bf Co- } (meaning "together"), and {\bf Relation }
+    \item Statistical procedure used to measure and describe the relationship between two variables 
+    \item Range between +1 and -1
+      \begin{itemize}
+        \item Positive when the values increase together
+        \item Negative when one value decreases as the other increases 
+      \end{itemize}
+\ldots
+\end{itemize}
+\end{frame}
+\begin{frame}{Overview cont..}
+\begin{itemize}
+  \item +1 is a perfect positive correlation
+  \item 0 is no correlation (independence)
+  \item -1 is a perfect negative correlation
+\end{itemize}
+\includegraphics[scale=0.5]{corelation}
+\end{frame}
+
+\section{Types}
+\begin{frame}{Types}
+\begin{itemize}
+  \item {\bf Pearson product-moment correlation} -When both variables, X and Y, are continuous
+  \item {\bf Point bi-serial correlation} - When 1 variable is continuous and 1 is dichotomous
+  \item {\bf Phi coefficient} - When both variables are dichotomous
+  \item {\bf Spearman rank correlation} - When both variables are ordinal (ranked data)
+\end{itemize}
+\end{frame}
+
+
+\section{Calculation}
+\begin{frame}{Calculation of Correlation}
+defined as \newline 
+\begin{center}
+$r = S_{xy}/\sqrt{S_{xx}S_{yy}}.$ 
+\end{center}
+where 
+\begin{center} $S_{xx} = \sum\limits_{i = 1}^N {\left( {x_i - \bar x} \right)^2}$ {(variance of x)} \end{center}
+and
+\begin{center} 
+$S_{xy} = \sum\limits_{i = 1}^N {\left( {x_i - \bar x} \right)} {\left( {y_i - \bar y} \right)}$ {(covariance of x and y)}
+\end{center}
+\end{frame}
+
+
+\section{Exercise}
+\subsection{manual}
+%\begin{frame}{Exercise - Desk Work}
+
+%\begin{tabular}
+\begingroup
+\fontsize{7pt}{9pt}\selectfont
+<< echo=FALSE >>=
+temp <- c(14.2,16.4,11.9,15.2,18.5,22.1,19.4,25.1,23.4,18.1,22.6,17.2)
+icecream <- c(215,325, 185, 332, 406, 522, 412,614, 544, 421, 445, 408)
+df <- data.frame(temp=temp,icecream=icecream)
+table <- list(df)
+@
+
+<<>>=
+print(df)
+@
+
+<< echo=FALSE >>=
+df$deviationTemp <- df$temp- mean(df$temp)
+df$deviationIce <- df$icecream- mean(df$icecream)
+df$SSxy <- (df$deviationTemp*df$deviationIce) 
+df$SSxx <- (df$deviationTemp*df$deviationTemp) 
+df$SSyy <- (df$deviationIce*df$deviationIce) 
+sum.SSxy <- sum(df$SSxy)
+sum.SSxx <- sum(df$SSxx)
+sum.SSyy <- sum(df$SSyy)
+@
+
+
+%\end{tabular}
+%\end{frame}
+
+\subsection{Output}
+%\begin{frame}{Another title}
+
+\clearpage 
+
+<<>>=
+print(df)
+print(sum.SSxy)
+print(sum.SSxx)
+print(sum.SSyy)
+@
+
+
+
+%\end{frame}
+\section{Corelation}
+\subsection{Corelation in R}
+
+\clearpage
+
+%\begin{frame}{Corelation in R}
+<<>>=
+cor.test(df$temp,df$icecream)
+@
+%\end{frame}
+
+\clearpage
+
+\fontsize{12pt}{14pt}\selectfont
+\subsection{Caution}
+\begin{frame}{Caution}
+\begin{itemize}
+\item {\bf !"Correlation Is Not Causation" ... }\newline
+When there is a correlation it does not mean that one thing causes the other
+\end{itemize}
+\end{frame}
+
+\section{Assumptions}
+\subsection{Assumptions}
+\begin{frame}{Assumptions}
+\begin{itemize}
+    \item Normal Distribution for X and Y
+    \item Linear relationship between X and Y
+    \item {\bf Homoscedasticity} - homogeneity of variance/ uniformity of variance 
+    leveneTest() from car package is used to test this
+\end{itemize}
+\end{frame}
+
+\end{document}
