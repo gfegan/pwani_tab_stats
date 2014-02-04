@@ -1,7 +1,6 @@
-#******** QUESTION 2 SOLUTION ******#
+#******** QUESTION  SOLUTION ******#
 #load the required libraries
 library(foreign) #allow reading of dta files
-#library(reshape2) 
 library(plyr) #provide summary of data
 
 #setting the working directory (cannot change working directory if you are working on a project folder)

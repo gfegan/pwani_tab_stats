@@ -8,8 +8,8 @@
 ## As a practical for new R users
 ## This section at the beginning enables you to put comments about the do-file
 ###################################################3
-                    # You can also put comments between these markers 
-# clear # The command clear in stata removes the data from memory in R we can use something like
+# You can also put comments between these markers 
+# clear #
 rm(list = ls())
 
 
@@ -18,9 +18,6 @@ rm(list = ls())
 # Do this first, and then the log file can be saved in the same directory
 ################################################################
 #setwd("H:/Pwani_Collabo/tab_stats")
-
-
-
 # We need to istall necessary packages, install packages
 # install.packages("packages/foreign", repos = NULL)
 # install.packages("packages/psych", repos = NULL)
