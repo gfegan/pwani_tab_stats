@@ -1,0 +1,228 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usepackage{Sweave}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+%\usecolortheme{dove}
+%\usecolortheme{rose}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\restylefloat{table}
+%\usetheme{Frankfurt}
+\usetheme{Singapore}
+
+%\usetheme{Pittsburgh}
+\usecolortheme[named=blue]{structure}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{\textbf{One sample and paired ttest  \\
+in R}}
+
+\titlepage{}
+
+\begin{frame}{One sample hypothesis testing about the mean}
+
+
+\begin{enumerate}
+\begin{pause}
+\item Set up the null hypothesis \\
+ \hspace{7mm}population mean = particular value  \\
+  \hspace{7 mm}\textcolor{green}{$H_0: \mu=\mu_0$}
+\end{pause}
+\begin{pause}
+ \item Set up the alternative hypothesis \\
+  \hspace{7mm}\textcolor{blue}{$H_1$:$\mu$ $\neq$ $\mu_0$}
+\end{pause}
+ \end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}{Example}
+Sample mean birth weight in 141 babies was 3.01 with s.e. 0.04.Suppose prior to the study it was thought population mean was 3.25 kg.What are the null and the alternative hypothesis?\vspace{7 mm}
+
+\begin{pause}
+\hspace{7 mm}\textcolor{green}{$H_0: \mu=3.25$ VS
+$H_1$:$\mu$ $\neq$ $3.25$}
+\end{pause}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+\item Set the level of significance \\
+\hspace{7 mm} \textcolor{green}{$\alpha$ usually given as 0.05.}
+\item Compute the test statistic
+\end{itemize}
+
+\begin{equation*}
+t=\frac{\bar{x}-\mu_0}{se(\bar{x})}
+\end{equation*}
+where
+\begin{equation*}
+se=\frac{s}{\sqrt{n}}
+\end{equation*}
+degrees of freedom=number of observations minus one.($n-1$)
+\end{frame}
+
+\begin{frame}{Example}
+sample mean = 3.01 \\
+standard error (sample mean) = 0.04 \\
+population mean = 3.25 \\
+
+\begin{equation*}
+\textcolor{green}{t=\frac{3.01-3.25}{0.04)}=-6.00}
+\end{equation*}
+\vspace{15mm}
+$df=n-1=141-1=140$
+\end{frame}
+
+\begin{frame}{Calculate appropriate p-value}
+\textbf{To get P-value,} \\
+Use statistical tables 
+\centering
+\includegraphics[width=10cm, height=4cm]{ttable.png}
+\\
+\textcolor{red}{P<0.001}
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Calculate appropriate p-value in R}
+<<echo=TRUE >>=
+pt(-6, df=141)
+@
+\textcolor{red}{P<0.001}
+\end{frame}
+
+\begin{frame}{Interpretation}
+\begin{itemize}
+\item Compare the p-value to the $\alpha$ level.\\
+\hspace{7 mm} Reject $H_0$ when P-value < 0.05\\
+\hspace{7 mm} Reject $H_0$ when P-value $\geq 0.05 $\\
+\hspace{7 mm}
+\end{itemize}
+
+\textbf{P-value} \\
+\begin{itemize}
+\item  probability of observing our data assuming that the null 
+ hypothesis is true \\
+\item probability of observing our data given that the population \\ 
+mean birth weight is 3.25 kg \\
+\end{itemize}
+\textcolor{red}{P<0.001} \\
+\textbf{Conclusion}
+\begin{itemize}
+\item unlikely that we would get our sample mean if the population mean birth weight was really 3.25 kg
+\item have found strong evidence to suggest that the population mean $\neq 3.25 kg$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Paired comparisons}
+\begin{itemize}
+\item When it is not feasible to assume that two groups of data are independent
+\item Used to compare means of the same population/subjects under different conditions
+\item Takes the correlation into account
+\item The differences between paired observations are assumed to be normally distributed
+\item More powerful since it reduces inter-subject variability  
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Examples of paired comparisons}
+\begin{itemize}
+\item Pre- and post-test scores for a student receiving tutoring 
+\item Fuel efficiency readings of two fuel types observed on the same automobile 
+\item Sunburn scores for two sunblock lotions, one applied to the individual's right arm, one to the left arm 
+\item Political attitude scores of husbands and wives 
+\end{itemize}
+
+\end{frame}
+
+<<echo=false, results=hide >>=
+library(epicalc)
+library(ggplot2)
+
+@
+
+\begin{frame}[fragile]{Worked Example}
+A stimulus is being examined to determine its effect on systolic blood pressure. Twelve men participate in the study. Their systolic blood pressure is measured both before and after the stimulus is applied.The values for BP before the stimulus are 20, 20, 21, 22, 23, 22, 27, 25, 27, 31,30 and 28. \\
+\vspace{4 mm}
+The values for the BP after the stimulus are given as 19, 22, 24, 24, 25, 25, 26, 26, 28, 28,29 and 32. \\
+\vspace{4 mm}
+Is there a change in BP before and after the stimulus was applied?
+
+@
+
+\end{frame}
+
+\begin{frame}[fragile]
+<<echo=TRUE >>=
+bp_a <-c(20, 20, 21, 22, 23, 22, 27, 25, 27, 30, 31,30)
+bp_b <- c(19, 22, 24, 24, 25, 25, 26, 26, 28, 32,28,29)
+ t.test(bp_a,bp_b, paired=TRUE)
+@
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+The t test is not significant (t=-1.09, p=0.1567), indicating that the stimuli did not significantly affect systolic blood pressure.
+
+\end{frame}
+
+\begin{frame}{Comparing group means: Two sample T-test}
+\begin{itemize}
+\item Used when comparing means of two independent groups.
+\item E.g. Comparing if the average miles per gallon between two models of a car brand.
+\end{itemize}
+\textbf{Assumptions:}\\
+\begin{itemize}
+\item Assumes normal distribution, within each group, of the variable being compared 
+
+\item The sampling distribution of the difference is also normally distributed
+
+\item Normally assumes equal variance between groups of the variable, but this assumption can be relaxed.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Calculating the standard error of the difference in means
+}
+\begin{enumerate}
+\item Look at the distributions of the two groups..  Are the standard deviations similar?
+If so, we can calculate the pooled standard deviation.
+
+\item Calculate the pooled standard deviation.
+
+\begin{equation*}
+s=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{(n_1-1)+(n_2-1)}}
+\end{equation*}
+
+\item Estimate the standard error.
+
+\begin{equation*}
+se=s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+\end{equation*}
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\textbf{Compute the test statistic as}
+\begin{equation*}
+t=\frac{\bar{x}_1-\bar{x}_1-\Delta}{se(\bar{x})}
+\end{equation*}
+
+\end{frame}
+
+\end{document}

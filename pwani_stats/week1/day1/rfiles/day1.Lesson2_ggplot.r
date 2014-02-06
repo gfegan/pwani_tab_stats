@@ -2,8 +2,9 @@
 #load the required libraries
 library(ggplot2) #used for plotting
 library(foreign) #allow reading of dta files
-#setting the working directory (cannot change working directory if you are working on a project folder)
-#setwd("pwani_stats")
+#--------------------------------------------------------------------------------
+#setwd("put the path to the cd")
+#-------------------------------------------------------------------------
 
 #load the data set
 zambia3 <- read.dta("data/zambia3.dta", convert.dates=TRUE)

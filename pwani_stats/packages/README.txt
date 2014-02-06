@@ -1,1 +1,1 @@
-Has all the packages
+Has all the packages tha we will use during the training

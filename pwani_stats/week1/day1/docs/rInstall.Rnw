@@ -1,0 +1,87 @@
+\documentclass[DIV=calc, paper=a4, fontsize=11pt]{scrartcl}
+\usepackage[cm]{fullpage} %reduce the margin set by latex of 60-70 words per line
+\usepackage{hyperref} %control links color and appearance
+\hypersetup{colorlinks=true ,linkcolor=red} %setup link color to red
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+%\documentclass{scrartcl}
+\usepackage{graphicx} %package for attaching images
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\title{Install R and R Studio}
+\author{}
+\date{\today}
+\maketitle{}
+\clearpage
+
+\section{R for Windows}
+There are two versions of the R executable in R-3.0.2/bin/i386 (32-bit) 
+and R-3.0.2/bin/x64 (64-bit).  By default only the first is
+installed on 32-bit versions of Windows, and both on 64-bit OSes.
+The distribution is distributed as an installer R-3.0.2-win.exe (latest version).
+
+\subsection{Installation of R on Windows}
+Download R setup file (provided with this CD) from \url {http://cran.r-project.org/}
+\begin{enumerate}
+\item Double click on the R-3.0.2-win.exe 
+\item  Follow the prompts ; and on the select components prompt -if you are using a 64bit select all the components and continue with the default settings
+\end{enumerate}
+Source: \url {http://cran.r-project.org/bin/windows/base/README.R-3.0.2}
+
+
+\subsection{Installation of R-Studio on Windows}
+Download R-studio setup file (provided with this CD) from \url {http://www.rstudio.com/ide/download/desktop}
+\begin{enumerate}
+\item Double click on the RStudio 0.98.490.exe 
+\item Follow the prompts ;keep the default settings during installation process
+\end{enumerate}
+
+\section{R for Mac-OS}
+    Since R 3.0.0 the binary is a single-arch build and contains only the x86\_64 (64-bit Intel) architecture.  PowerPC Macs and 32-bit Macs are only supported by               building from sources or by older binary R versions.  The default package type is "mac.binary" and the binary repository 
+    layout has changed accordingly.R 3.0.2 binary for Mac OS X 10.6 (Snow Leopard) and 
+    higher,signed package. Contains R 3.0.2 framework, R.app GUI 1.62 in 64-bit for Intel Macs.
+    
+\subsection{Installation of R on Mac}
+      Download R setup file (provided with this CD) from  \url {<http://cran.r-project.org/>}
+      \begin{enumerate}
+      \item Double click on the R-latest.pkg
+      \item Follow the prompts ;keep the default settings during installation process
+      \end{enumerate}
+      Source \url{ (http://cran.r-project.org/bin/macosx/)}
+
+  
+\subsection{Installation of R-Studio on Mac (64-bit)}
+      Download R-studio setup file (provided with this CD) from \url { http://www.rstudio.com/ide/download/desktop}
+      \begin{enumerate}
+      \item Double click on the RStudio-0.98.490.dmg
+      \item Follow the prompts ; keep the default settings during installation process
+      \end{enumerate}
+
+
+\clearpage
+\section{R for Ubuntu}
+The current version of R available when a new version of Ubuntu is released is always available in the universe repository. To install R:
+ sudo apt-get install r-base r-base-dev
+ \subsection{Installation of R-Studio on Ubuntu }
+ On the Terminal, use the "cd" command to move to the directory in which your downloads are saved (the path to this CD), and issue this command:
+  \begin{quote}
+  sudo gdebi rstudio-0.98.490-amd64.deb (on a 64 bit)
+  
+  sudo gdebi rstudio-0.98.490-i386.deb (on a 32 bit)
+  \end{quote}
+useful presentation here:  \url {http://www.ats.ucla.edu/stat/r/seminars/intro.htm}
+
+
+  \section{A tip to Install Packages at once}
+  On a new R file type the code below and  include all the packages on the packages.txt file (each seperated with a comma)
+   \begin{quote}
+  install.packages(c("foreign","epicalc","...", 
+  ,"...", 
+  ,"...", 
+  ,"...", 
+      ))
+\end{quote}
+
+
+  
+
+\end{document}
