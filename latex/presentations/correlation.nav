@@ -12,36 +12,39 @@
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {2}{1}{2}{3/3}{Introduction}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\sectionentry {3}{Types}{4}{Types}{0}}
-\headcommand {\beamer@sectionpages {2}{3}}
-\headcommand {\beamer@subsectionpages {2}{3}}
-\headcommand {\slideentry {3}{0}{3}{4/4}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{4}{Uses}}\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\slideentry {2}{2}{1}{4/4}{Uses}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\sectionentry {4}{Calculation}{5}{Calculation}{0}}
-\headcommand {\beamer@sectionpages {4}{4}}
+\headcommand {\sectionentry {3}{Types}{5}{Types}{0}}
+\headcommand {\beamer@sectionpages {2}{4}}
 \headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\slideentry {4}{0}{4}{5/5}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\sectionentry {5}{Exercise}{6}{Exercise}{0}}
+\headcommand {\sectionentry {4}{Calculation}{6}{Calculation}{0}}
 \headcommand {\beamer@sectionpages {5}{5}}
 \headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{6}{manual}}\headcommand {\beamer@subsectionpages {6}{5}}
-\headcommand {\beamer@subsectionentry {0}{5}{2}{6}{Output}}\headcommand {\beamer@subsectionpages {6}{5}}
-\headcommand {\sectionentry {6}{Corelation}{8}{Corelation}{0}}
-\headcommand {\beamer@sectionpages {6}{7}}
-\headcommand {\beamer@subsectionpages {6}{7}}
-\headcommand {\beamer@subsectionentry {0}{6}{1}{8}{Corelation in R}}\headcommand {\beamer@subsectionpages {8}{7}}
-\headcommand {\beamer@subsectionentry {0}{6}{2}{10}{Caution}}\headcommand {\beamer@subsectionpages {8}{9}}
-\headcommand {\slideentry {6}{2}{1}{10/10}{Caution}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\sectionentry {7}{Assumptions}{11}{Assumptions}{0}}
-\headcommand {\beamer@sectionpages {8}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{7}{1}{11}{Assumptions}}\headcommand {\beamer@subsectionpages {11}{10}}
-\headcommand {\slideentry {7}{1}{1}{11/11}{Assumptions}{0}}
+\headcommand {\slideentry {4}{0}{3}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\sectionentry {5}{Exercise}{7}{Exercise}{0}}
+\headcommand {\beamer@sectionpages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{7}{manual}}\headcommand {\beamer@subsectionpages {7}{6}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{7}{Output}}\headcommand {\beamer@subsectionpages {7}{6}}
+\headcommand {\sectionentry {6}{Corelation}{9}{Corelation}{0}}
+\headcommand {\beamer@sectionpages {7}{8}}
+\headcommand {\beamer@subsectionpages {7}{8}}
+\headcommand {\beamer@subsectionentry {0}{6}{1}{9}{Corelation in R}}\headcommand {\beamer@subsectionpages {9}{8}}
+\headcommand {\beamer@subsectionentry {0}{6}{2}{11}{Caution}}\headcommand {\beamer@subsectionpages {9}{10}}
+\headcommand {\slideentry {6}{2}{1}{11/11}{Caution}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\sectionentry {7}{Assumptions}{12}{Assumptions}{0}}
+\headcommand {\beamer@sectionpages {9}{11}}
 \headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\beamer@sectionpages {11}{11}}
-\headcommand {\beamer@documentpages {11}}
-\headcommand {\def \inserttotalframenumber {7}}
+\headcommand {\beamer@subsectionentry {0}{7}{1}{12}{Assumptions}}\headcommand {\beamer@subsectionpages {12}{11}}
+\headcommand {\slideentry {7}{1}{1}{12/12}{Assumptions}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@partpages {1}{12}}
+\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\beamer@sectionpages {12}{12}}
+\headcommand {\beamer@documentpages {12}}
+\headcommand {\def \inserttotalframenumber {8}}

@@ -76,7 +76,7 @@
 \makeatother
 
 \author{Ken Mwai}
-\institute{KEMRI-Wellcome}
+\institute{Pwani-University R WorkShop}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 \begin{document}
@@ -110,6 +110,13 @@ Correlation
   \item -1 is a perfect negative correlation
 \end{itemize}
 \includegraphics[scale=0.5]{corelation}
+\end{frame}
+\subsection{Uses}
+\begin{frame}{Use of Corelation}
+When two variables, let's call them X  Y, are correlated, then one variable can be
+used to predict the other variable \newline
+Example:IQ and perfomance...
+
 \end{frame}
 
 \section{Types}
@@ -231,12 +238,16 @@ $S_{xy} = \sum\limits_{i = 1}^N {\left( {x_i - \bar x} \right)} {\left( {y_i - \
 %\end{frame}
 \section{Corelation}
 \subsection{Corelation in R}
-
 \clearpage
-
 %\begin{frame}{Corelation in R}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(df}\hlopt{$}\hlstd{temp, df}\hlopt{$}\hlstd{icecream)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9575
+\end{verbatim}
 \begin{alltt}
 \hlkwd{cor.test}\hlstd{(df}\hlopt{$}\hlstd{temp, df}\hlopt{$}\hlstd{icecream)}
 \end{alltt}
@@ -257,15 +268,27 @@ $S_{xy} = \sum\limits_{i = 1}^N {\left( {x_i - \bar x} \right)} {\left( {y_i - \
 \end{knitrout}
 
 %\end{frame}
+{\bf Diff btwn cor and cor.test}
+The cor.test output also includes the point estimate reported by cor
+Cor.test has p-value and also CI
 
 \clearpage
 
 \fontsize{12pt}{14pt}\selectfont
+
 \subsection{Caution}
 \begin{frame}{Caution}
 \begin{itemize}
 \item {\bf !"Correlation Is Not Causation" ... }\newline
 When there is a correlation it does not mean that one thing causes the other
+\item The magnitude of a correlation depends upon
+many factors, including 
+\begin{itemize}
+\item Sampling (random and representative?)
+\item Measurement of X and Y and Several other assumptions 
+\ldots
+\end{itemize}
+\ldots
 \end{itemize}
 \end{frame}
 
@@ -273,7 +296,7 @@ When there is a correlation it does not mean that one thing causes the other
 \subsection{Assumptions}
 \begin{frame}{Assumptions}
 \begin{itemize}
-    \item Normal Distribution for X and Y
+    \item Normal Distribution for X and Y if not specifying the method - Use method="Spearman" for non-normal data.
     \item Linear relationship between X and Y
     \item {\bf Homoscedasticity} - homogeneity of variance/ uniformity of variance 
     leveneTest() from car package is used to test this
