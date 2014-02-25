@@ -2,7 +2,7 @@
 library(foreign)
 
 # Set the working directoryy accordinglt
-setwd("H:/Pwani_Collabo/tab_stats")
+setwd("E:/pwaniTraining/pwani_stats/week2/data")
 
 # assign the stat dataframe to an R dataframe object called onchall
 onchall <- read.dta("onchall.dta")
@@ -11,7 +11,7 @@ onchall <- read.dta("onchall.dta")
 View(onchall)
 
 #label up the values of the area variable 
-onchall$area = factor(onchall$area,labels=c("Savannah","Forest")) 
+onchall$area <-  factor(onchall$area,labels=c("Savannah","Forest")) 
 
 # produce a contingency table of the outcome by area
 with(onchall, table(mf,area))
@@ -70,6 +70,7 @@ anova(emptymod,mod2,test="LRT") # compare the empty model aka "Null model" to th
 # Lets look at a model where there is an intearction between two exposures
 data("womensrole", package = "HSAUR2")
 View(womensrole)
+use(womensrole)
 fm1 <- cbind(agree, disagree) ~ gender + education
 womensrole_glm_1 <- glm(fm1, data = womensrole, 
                         family = binomial())

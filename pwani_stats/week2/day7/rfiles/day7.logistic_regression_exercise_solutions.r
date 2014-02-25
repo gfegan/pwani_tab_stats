@@ -33,7 +33,7 @@ prac1mod <- glm(ond~mfpos,data=ond15p,family=binomial)  # fit a logistic model
 summary(prac1mod)
 exp(coef(prac1mod))
 exp(confint(prac1mod))
-femalesondis <- subset(ond15p,subset=sex==2)  # create a subset of the date with just females
+femalesondis <- subset(ond15p,sex=="Female")  # create a subset of the date with just females
 prac1mod_f <- glm(ond~mfpos,data=femalesondis,family=binomial)  # fit the logistic model
 summary(prac1mod_f)
 exp(coef(prac1mod_f))

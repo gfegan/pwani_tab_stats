@@ -23,6 +23,7 @@ l=c("Blue", 2, 5, "Red")
 l
 
 # Create a matrix
+#a matrix with values 1 to 6 of 2 rows 3 columns
 m=matrix(1:6,2,3)
 m
 ## Matrix creation is column-wise
@@ -63,6 +64,8 @@ ncol(d)
 # Check the attributes
 attributes(d)
 
+#saving as an .rda file
+save(d, "d.rda")
 # Call a particular cell in a dataframe
 d[2,1]
 d[1,2]
@@ -76,7 +79,7 @@ edit(d)
 ?functionname
 
 # Download and install packages
-install.packages("psych") ## Need to specify CRAN the 1st time
+install.packages("psych", ) ## Need to specify CRAN the 1st time
 
 #using R as a calcualtor
 #The following are the heights in cm of a random sample of 20 Jamaican boys with homozygous sickle cell disease at age two years

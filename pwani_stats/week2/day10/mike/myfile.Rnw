@@ -1,0 +1,45 @@
+\documentclass[a4paper]{report}
+\usepackage{refstyle}
+\usepackage{float}
+\usepackage{booktabs}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+
+\title{Sweave Example 1}
+\author{Mike Ooko}
+\date(\today)
+
+\section{Introduction}
+This is what we are moving to
+
+
+\maketitle
+In this example we embed parts of the examples from the
+\texttt{kruskal.test} help page into a \LaTeX{} document:
+<<>>=
+data(airquality)
+library(epicalc)
+kruskal.test(Ozone ~ Month, data = airquality)
+@
+which shows that the location parameter of the Ozone
+distribution varies significantly from month to month. Finally we
+include a boxplot of the data:
+
+
+\begin{figure}[H]
+\begin{center}
+
+<<fig=TRUE,echo=FALSE>>=
+boxplot(Ozone ~ Month, data = airquality)
+@
+
+\end{center}
+\caption{A boxplot of ozone by month}
+\label{fig:fig1}
+\end{figure}
+
+
+The median zone is highest in August, as shown in \figref{fig1}.
+\end{document}
